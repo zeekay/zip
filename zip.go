@@ -1,19 +1,36 @@
-// hello.go
-
 package zip
 
 import (
-    "log"
     "io"
+    "log"
     "net/http"
+    "encoding/json"
 )
 
-type Route func() string
+type Req struct {
+    req *http.Request
+}
+
+type Res struct {
+    res http.ResponseWriter
+}
+
+func (r *Res) WriteString(s string) {
+    io.WriteString(r.res, s)
+}
+
+func (r *Res) Json(value interface{}) {
+        r.res.Header().Set("Content-Type", "application/javascript")
+        json.NewEncoder(r.res).Encode(value)
+}
+
+type Route func(Req, Res)
 
 func Get(url string, handler Route) {
-    http.HandleFunc(url, func(res http.ResponseWriter, req *http.Request) {
-        res.Header().Set("Content-Type", "text/plain")
-        io.WriteString(res, handler())
+    http.HandleFunc(url, func(w http.ResponseWriter, r *http.Request) {
+        req := Req{r}
+        res := Res{w}
+        handler(req, res)
     })
 }
 
