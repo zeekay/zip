@@ -1,5 +1,5 @@
 # zip
-A zippy web micro-framwork. Just a tiny bit of sugar for Go's excellent
+A zippy web micro-framework. Just a tiny bit of sugar for Go's excellent
 `net/http` package. Inspired by [bottle][bottle], [express][express], [web.go][web.go], etc.
 
 ## Install
