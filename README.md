@@ -20,17 +20,9 @@ import (
     "zeekay.io/zip"
 )
 
-type json struct {
-    Hello string `json:"hello"`
-}
-
 func main() {
     zip.Get("/", func(req zip.Req, res zip.Res) {
         res.WriteString("hello world!")
-    })
-
-    zip.Get("/json", func(req zip.Req, res zip.Res) {
-        res.JSON(&json{Hello: "world!"})
     })
     zip.Listen(":1337")
 }
@@ -43,7 +35,13 @@ $ go run hello.go
 ```
 
 ## Examples
-You can checkout some examples of using Zip here: [examples/][examples]. To run
-them clone this repository and use `go run`.
+There are a few examples in [examples/][examples] for you to play with:
 
-[examples]: https://github.com/zeekay/zip/tree/master/examples
+- [hello.go][hello.go]
+- [json.go][json.go]
+- [websocket.go][websocket.go]
+
+[examples]:     examples
+[hello.go]:     examples/hello/hello.go
+[json.go]:      examples/json/json.go
+[websocket.go]: examples/websocket/websocket.go
