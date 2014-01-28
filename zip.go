@@ -20,8 +20,8 @@ func (r *Res) WriteString(s string) {
 }
 
 func (r *Res) JSON(value interface{}) {
-        r.res.Header().Set("Content-Type", "application/javascript")
-        json.NewEncoder(r.res).Encode(value)
+    r.res.Header().Set("Content-Type", "application/javascript")
+    json.NewEncoder(r.res).Encode(value)
 }
 
 type Route func(Req, Res)
