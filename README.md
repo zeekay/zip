@@ -41,3 +41,8 @@ You can run the server with `go run`:
 ```bash
 $ go run hello.go
 ```
+
+## Examples
+Check out the [examples/][examples] folder for more.
+
+[examples]: https://github.com/zeekay/zip/tree/master/examples
