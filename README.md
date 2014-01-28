@@ -1,5 +1,6 @@
 # zip
-A simple and fast web framework for go.
+A zippy web micro-framwork. Just a tiny bit of sugar for Go's excellent
+`net/http` package. Inspired by [bottle][bottle], [express][express], [web.go][web.go], etc.
 
 ## Install
 Zip can be installed with `go get`:
@@ -9,11 +10,9 @@ $ go get zeekay.io/zip
 ```
 
 ## Usage
-A simple hello world web application would look something like this:
+A simple hello world web app looks like this:
 
 ```go
-// hello.go
-
 package main
 
 import (
@@ -45,3 +44,6 @@ There are a few examples in [examples/][examples] for you to play with:
 [hello.go]:     https://github.com/zeekay/zip/blob/master/examples/hello/hello.go
 [json.go]:      https://github.com/zeekay/zip/blob/master/examples/json/json.go
 [websocket.go]: https://github.com/zeekay/zip/blob/master/examples/websocket/websocket.go
+[bottle]:       http://bottlepy.org
+[express]:      http://expressjs.com
+[web.go]:       http://webgo.io
