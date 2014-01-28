@@ -20,7 +20,7 @@ import (
     "zeekay.io/zip"
 )
 
-type Hello struct {
+type json struct {
     Hello string `json:"hello"`
 }
 
@@ -30,7 +30,7 @@ func main() {
     })
 
     zip.Get("/json", func(req zip.Req, res zip.Res) {
-        res.Json(&Hello{Hello: "world!"})
+        res.JSON(&json{Hello: "world!"})
     })
     zip.Listen(":1337")
 }

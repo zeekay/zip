@@ -19,7 +19,7 @@ func (r *Res) WriteString(s string) {
     io.WriteString(r.res, s)
 }
 
-func (r *Res) Json(value interface{}) {
+func (r *Res) JSON(value interface{}) {
         r.res.Header().Set("Content-Type", "application/javascript")
         json.NewEncoder(r.res).Encode(value)
 }
