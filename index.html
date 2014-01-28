@@ -1,13 +1,18 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="chrome=1"><title>Zip by zeekay</title><link rel="stylesheet" href="stylesheets/styles.css"><link rel="stylesheet" href="stylesheets/pygment_trac.css"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]--><meta name="go-import" content="zeekay.io/zip git https://github.com/zeekay/zip"></head><body><div class="wrapper"><header><h1>Zip</h1><p>Zippy web framework for Go&period;</p><p class="view"><a href="https://github.com/zeekay/zip">View the Project on GitHub<small>zeekay&sol;zip</small></a></p><ul><li><a href="https://github.com/zeekay/zip/zipball/master">Download<strong>ZIP File</strong></a></li><li><a href="https://github.com/zeekay/zip/tarball/master">Download<strong>TAR Ball</strong></a></li><li><a href="https://github.com/zeekay/zip">View On<strong>GitHub</strong></a></li></ul></header><section><h1>zip</h1>
 <p>A simple and fast web framework for go.
 
+</p>
+<h2>Install</h2>
+<p>Zip can be installed with <code>go get</code>:
 
 </p>
-<h2>Getting started</h2>
-<p>This is a simple hello world web application:
+<pre><code class="lang-bash">$ go get zeekay.io/zip</code></pre>
+<h2>Usage</h2>
+<p>A simple hello world web application would look something like this:
 
 </p>
-<pre><code class="lang-go"><span class="keyword">package</span> main
+<pre><code class="lang-go"><span class="comment">// hello.go</span>
+<span class="keyword">package</span> main
 
 <span class="keyword">import</span> (
     <span class="string">"zeekay.io/zip"</span>
@@ -21,8 +26,7 @@
     zip.Get(<span class="string">"/"</span>, hello)
     zip.Listen(<span class="string">":8000"</span>)
 }</code></pre>
-<h2>Run it</h2>
-<p>Put the above code in a package called <code>hello.go</code>. To run it, type:
+<p>You can run the server with <code>go run</code>:
 
 </p>
 <pre><code class="lang-bash">$ go run hello.go</code></pre>
