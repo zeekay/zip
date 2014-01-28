@@ -1,7 +1,7 @@
 package main
 
 import (
-    "github.com/zeekay/zip"
+    "zeekay.io/zip"
 )
 
 func hello() string {

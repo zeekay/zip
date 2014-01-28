@@ -9,7 +9,7 @@ This is a simple hello world web application:
 package main
 
 import (
-    "github.com/zeekay/zip"
+    "zeekay.io/zip"
 )
 
 func hello() string {
