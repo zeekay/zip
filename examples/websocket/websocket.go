@@ -10,5 +10,6 @@ func main() {
     zip.WebSocket("/ws", func(ws zip.Conn) {
         io.Copy(ws, ws)
     })
-    zip.Listen(":1337")
+
+    zip.Run(":1337")
 }

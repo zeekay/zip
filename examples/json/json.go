@@ -5,23 +5,27 @@ import (
     "zeekay.io/zip"
 )
 
-type helloJson struct {
+type helloJSON struct {
     Hello string `json:"hello"`
 }
 
 func main() {
-    // You can easily return JSON data with res.JSON()
-    zip.Get("/json", func(req zip.Req, res zip.Res) {
-        res.JSON(&helloJson{Hello: "world!"})
+    // res.End can handle JSON too!
+    zip.Get("/", func(req zip.Req, res zip.Res) {
+        res.End(&helloJSON{Hello: "world!"})
     })
 
-    // ...and decode JSON sent in a POST body with req.JSON().
-    // try:
-    // $ curl 127.0.0.1:1337/json -d '{"hello": "world"}'
+    // Or more explicitly:
+    zip.Get("/json", func(req zip.Req, res zip.Res) {
+        res.JSON(&helloJSON{Hello: "world!"})
+    })
+
+    // You can also decode JSON sent in a POST body with req.JSON():
     zip.Post("/json", func(req zip.Req, res zip.Res) {
-        data := helloJson{}
+        data := helloJSON{}
         req.JSON(&data)
         log.Println(data)
     })
-    zip.Listen(":1337")
+
+    zip.Run(":1337")
 }

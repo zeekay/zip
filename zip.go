@@ -5,7 +5,7 @@ import (
     "net/http"
 )
 
-func Listen(bind string) {
+func Run(bind string) {
     log.Println("Listening on " + bind)
     log.Fatal(http.ListenAndServe(bind, nil))
 }

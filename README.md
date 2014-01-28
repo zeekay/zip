@@ -19,9 +19,11 @@ import "zeekay.io/zip"
 
 func main() {
     zip.Get("/", func(req zip.Req, res zip.Res) {
-        res.WriteString("hello world!")
+        res.End("hello world!")
     })
-    zip.Listen(":1337")
+
+    // Run and listen on port 1337.
+    zip.Run(":1337")
 }
 ```
 
