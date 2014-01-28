@@ -41,7 +41,7 @@ There are a few examples in [examples/][examples] for you to play with:
 - [json.go][json.go]
 - [websocket.go][websocket.go]
 
-[examples]:     examples
-[hello.go]:     examples/hello/hello.go
-[json.go]:      examples/json/json.go
-[websocket.go]: examples/websocket/websocket.go
+[examples]:     https://github.com/zeekay/zip/blob/master/examples
+[hello.go]:     https://github.com/zeekay/zip/blob/master/examples/hello/hello.go
+[json.go]:      https://github.com/zeekay/zip/blob/master/examples/json/json.go
+[websocket.go]: https://github.com/zeekay/zip/blob/master/examples/websocket/websocket.go
