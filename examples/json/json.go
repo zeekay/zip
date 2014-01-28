@@ -19,7 +19,6 @@ func main() {
     // try:
     // $ curl 127.0.0.1:1337/json -d '{"hello": "world"}'
     zip.Post("/json", func(req zip.Req, res zip.Res) {
-
         data := helloJson{}
         req.JSON(&data)
         log.Println(data)
