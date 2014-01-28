@@ -13,6 +13,7 @@ type Req struct {
 
 type Res struct {
     res http.ResponseWriter
+    Header http.Header
 }
 
 func (r *Res) WriteString(s string) {
@@ -29,7 +30,7 @@ type Route func(Req, Res)
 func Get(url string, handler Route) {
     http.HandleFunc(url, func(w http.ResponseWriter, r *http.Request) {
         req := Req{r}
-        res := Res{w}
+        res := Res{res: w, Header: w.Header()}
         handler(req, res)
     })
 }
