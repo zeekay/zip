@@ -15,9 +15,7 @@ A simple hello world web app looks like this:
 ```go
 package main
 
-import (
-    "zeekay.io/zip"
-)
+import "zeekay.io/zip"
 
 func main() {
     zip.Get("/", func(req zip.Req, res zip.Res) {
