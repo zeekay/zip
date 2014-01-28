@@ -43,6 +43,7 @@ $ go run hello.go
 ```
 
 ## Examples
-Check out the [examples/][examples] folder for more.
+You can checkout some examples of using Zip here: [examples/][examples]. To run
+them clone this repository and use `go run`.
 
 [examples]: https://github.com/zeekay/zip/tree/master/examples
