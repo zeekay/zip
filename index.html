@@ -12,19 +12,26 @@
 
 </p>
 <pre><code class="lang-go"><span class="comment">// hello.go</span>
+
 <span class="keyword">package</span> main
 
 <span class="keyword">import</span> (
     <span class="string">"zeekay.io/zip"</span>
 )
 
-<span class="keyword">func</span> hello() <span class="typename">string</span> {
-    <span class="keyword">return</span> <span class="string">"hello world!"</span>
+<span class="keyword">type</span> Hello <span class="keyword">struct</span> {
+    Hello <span class="typename">string</span> <span class="string">`json:"hello"`</span>
 }
 
 <span class="keyword">func</span> main() {
-    zip.Get(<span class="string">"/"</span>, hello)
-    zip.Listen(<span class="string">":8000"</span>)
+    zip.Get(<span class="string">"/"</span>, <span class="keyword">func</span>(req zip.Req, res zip.Res) {
+        res.WriteString(<span class="string">"hello world!"</span>)
+    })
+
+    zip.Get(<span class="string">"/json"</span>, <span class="keyword">func</span>(req zip.Req, res zip.Res) {
+        res.Json(&amp;Hello{Hello: <span class="string">"world!"</span>})
+    })
+    zip.Listen(<span class="string">":1337"</span>)
 }</code></pre>
 <p>You can run the server with <code>go run</code>:
 
