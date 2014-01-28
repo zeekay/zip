@@ -8,22 +8,23 @@ import (
     "encoding/json"
 )
 
-type Req struct {
-    req *http.Request
-}
-
-type Res struct {
-    res http.ResponseWriter
-    Header http.Header
-}
-
 type Handler func(Req, Res)
-
-type WebSocketHandler func(*websocket.Conn)
+type WebSocketHandler func(Conn)
 
 var (
     handlers = make(map[string]Handler)
 )
+
+// Request struct
+type Req struct {
+    req *http.Request
+}
+
+// Response struct
+type Res struct {
+    res http.ResponseWriter
+    Header http.Header
+}
 
 func (r *Res) WriteString(s string) (int, error) {
     return io.WriteString(r.res, s)
@@ -36,6 +37,11 @@ func (w *Res) Write(data []byte) (int, error) {
 func (r *Res) JSON(value interface{}) {
     r.res.Header().Set("Content-Type", "application/javascript")
     json.NewEncoder(r.res).Encode(value)
+}
+
+// WebSocket Connection struct
+type Conn struct {
+    *websocket.Conn
 }
 
 func AddHandler(url, method string, handler Handler) {
@@ -63,6 +69,13 @@ func AddHandler(url, method string, handler Handler) {
             w.WriteHeader(http.StatusMethodNotAllowed)
         }
     })
+}
+
+func AddWebSocketHandler(url string, handler WebSocketHandler) {
+    http.Handle(url, websocket.Handler(func(ws *websocket.Conn) {
+        conn := Conn{ws}
+        handler(conn)
+    }))
 }
 
 func Route(url string, handler Handler) {
@@ -98,7 +111,7 @@ func Options(url string, handler Handler) {
 }
 
 func WebSocket(url string, handler WebSocketHandler) {
-  http.Handle(url, websocket.Handler(handler))
+    AddWebSocketHandler(url, handler)
 }
 
 func Listen(bind string) {
