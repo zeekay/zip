@@ -1,3 +1,5 @@
+// hello.go
+
 package zip
 
 import (
@@ -16,5 +18,6 @@ func Get(url string, handler Route) {
 }
 
 func Listen(bind string) {
+    log.Println("Listening on " + bind)
     log.Fatal(http.ListenAndServe(bind, nil))
 }

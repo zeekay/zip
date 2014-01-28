@@ -1,11 +1,18 @@
 # zip
 A simple and fast web framework for go.
 
+## Install
+Zip can be installed with `go get`:
 
-## Getting started
-This is a simple hello world web application:
+```bash
+$ go get zeekay.io/zip
+```
+
+## Usage
+A simple hello world web application would look something like this:
 
 ```go
+// hello.go
 package main
 
 import (
@@ -22,8 +29,7 @@ func main() {
 }
 ```
 
-## Run it
-Put the above code in a package called `hello.go`. To run it, type:
+You can run the server with `go run`:
 
 ```bash
 $ go run hello.go
