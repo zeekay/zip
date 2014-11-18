@@ -20,25 +20,29 @@ func (r *Req) JSON(s interface{}) (err error) {
 }
 
 // Save form file to disk
-func (r *Req) SaveFormFile(formName, outputFile string) (err error) {
+func (r *Req) SaveFormFile(formName, dstName string) (err error) {
+	// Get form file
 	file, _, err := r.FormFile(formName)
 	defer file.Close()
 	if err != nil {
 		return err
 	}
 
-	dst, err := os.Create(outputFile)
+	// Create new dst file
+	dst, err := os.Create(dstName)
 	if err != nil {
 		return err
 	}
 
+	// Copy form file to destination
 	_, err = io.Copy(dst, file)
 
 	return err
 }
 
-func (r *Req) MustSaveFormFile(formName, outputFile string) {
-	err := r.SaveFormFile(formName, outputFile)
+// Save form file to disk and panic if err
+func (r *Req) MustSaveFormFile(formName, dstName string) {
+	err := r.SaveFormFile(formName, dstName)
 	if err != nil {
 		panic(errors.New(fmt.Sprintf("Failed to save file: %v", err)))
 	}
